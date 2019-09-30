@@ -74,7 +74,8 @@ public class EarthquakeCityMap extends PApplet {
 	    List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);
 	    
 	    for (PointFeature eq: earthquakes) {
-	    	markers.add( new SimplePointMarker(eq.getLocation(), eq.getProperties()));
+	    	markers.add(createMarker(eq));
+	    	//markers.add( new SimplePointMarker(eq.getLocation(), eq.getProperties()));
 	    	
 	    	
 	    }
@@ -128,10 +129,10 @@ public class EarthquakeCityMap extends PApplet {
 	    // above if you want to change what you mean by "moderate" and "light")
 	    
 	    
-	    	if((int) marker.getProperty("magnitude") < THRESHOLD_LIGHT ) {
+	    	if(mag <= THRESHOLD_LIGHT ) {
 	    		marker.setColor(green);
 	    	}
-	    	else if(((int) marker.getProperty("magnitude") >= THRESHOLD_LIGHT )&&( (int) marker.getProperty("magnitude") <=THRESHOLD_MODERATE)) {
+	    	else if( mag <=THRESHOLD_MODERATE) {
 	    		marker.setColor(lavender);
 	    	}
 	    	else {
