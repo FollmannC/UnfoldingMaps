@@ -128,6 +128,19 @@ public class EarthquakeCityMap extends PApplet {
 	    // above if you want to change what you mean by "moderate" and "light")
 	    
 	    
+	    	if((int) marker.getProperty("magnitude") < THRESHOLD_LIGHT ) {
+	    		marker.setColor(green);
+	    	}
+	    	else if(((int) marker.getProperty("magnitude") >= THRESHOLD_LIGHT )&&( (int) marker.getProperty("magnitude") <=THRESHOLD_MODERATE)) {
+	    		marker.setColor(lavender);
+	    	}
+	    	else {
+	    		marker.setColor(red);
+	    		
+	    	}
+	    
+	    	
+	    
 	    // Finally return the marker
 	    return marker;
 	}
