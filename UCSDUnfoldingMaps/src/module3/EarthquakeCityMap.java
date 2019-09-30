@@ -131,13 +131,16 @@ public class EarthquakeCityMap extends PApplet {
 	    
 	    	if(mag <= THRESHOLD_LIGHT ) {
 	    		marker.setColor(green);
+	    		marker.setRadius(6);
+	    		
 	    	}
 	    	else if( mag <=THRESHOLD_MODERATE) {
 	    		marker.setColor(lavender);
+	    		marker.setRadius(14);
 	    	}
 	    	else {
 	    		marker.setColor(red);
-	    		
+	    		marker.setRadius(18);
 	    	}
 	    
 	    	
