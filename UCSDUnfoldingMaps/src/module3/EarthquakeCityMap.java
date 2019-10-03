@@ -36,9 +36,9 @@ public class EarthquakeCityMap extends PApplet {
 	private static final boolean offline = true;
 	
 	// Less than this threshold is a light earthquake
-	public static final float THRESHOLD_MODERATE = 5;
+	public static final float THRESHOLD_MODERATE = 4;
 	// Less than this threshold is a minor earthquake
-	public static final float THRESHOLD_LIGHT = 4;
+	public static final float THRESHOLD_LIGHT = 3;
 
 	/** This is where to find the local tiles, for working without an Internet connection */
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
@@ -74,7 +74,16 @@ public class EarthquakeCityMap extends PApplet {
 	    List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);
 	    
 	    for (PointFeature eq: earthquakes) {
-	    	markers.add(createMarker(eq));
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	Object magObj = eq.getProperty("magnitude");
+			float mag = Float.parseFloat(magObj.toString());
+			if (mag >= 3) 
+				{markers.add(createMarker(eq));}
+			
 	    	//markers.add( new SimplePointMarker(eq.getLocation(), eq.getProperties()));
 	    	
 	    	
@@ -87,6 +96,7 @@ public class EarthquakeCityMap extends PApplet {
 	    
 	    
 	    // Add the markers to the map so that they are displayed
+	    	
 	    map.addMarkers(markers);
 	}
 		
@@ -118,6 +128,8 @@ public class EarthquakeCityMap extends PApplet {
 	    int lavender = color(255,155,255);
 	    int red = color(255,0,102);
 	    int green = color(0,205,0);
+	    int grey = color(150,150,150);
+	    
 	    
 		
 		// TODO (Step 4): Add code below to style the marker's size and color 
@@ -129,13 +141,14 @@ public class EarthquakeCityMap extends PApplet {
 	    // above if you want to change what you mean by "moderate" and "light")
 	    
 	    
-	    	if(mag <= THRESHOLD_LIGHT ) {
+	    	if(mag < THRESHOLD_LIGHT ) {
 	    		marker.setColor(green);
-	    		marker.setRadius(6);
+	    		marker.setRadius(8);
+	    		
 	    		
 	    	}
 	    	else if( mag <=THRESHOLD_MODERATE) {
-	    		marker.setColor(lavender);
+	    		marker.setColor(grey);
 	    		marker.setRadius(14);
 	    	}
 	    	else {
@@ -164,16 +177,16 @@ public class EarthquakeCityMap extends PApplet {
 		rect(25,100,150,200);
 		  fill(255,0,102);
 		ellipse(50,150,18,18);
-		  fill(255,155,205);
+		  fill(150,150,150);
 		ellipse(50,175,14,14);
-		  fill(0,205,0);
-		ellipse(50,200,8,8);
+		  //fill(0,205,0);
+		//ellipse(50,200,8,8);
 		 
 		fill(0,0,0);
 		  text("Earthquake Key",60,125);
-		  text("5.0+ Magnitude",65,155);
-		  text("4.0+ Magnitude",65,180);
-		  text("Below 4.0",65,205);
+		  text("4.0+ Magnitude",65,155);
+		  text("3.0+ Magnitude",65,180);
+		  
 		  
 		fill(255,255,170);
 	
