@@ -35,7 +35,7 @@ public class EarthquakeCityMap extends PApplet {
 	private static final long serialVersionUID = 1L;
 
 	// IF YOU ARE WORKING OFFILINE, change the value of this variable to true
-	private static final boolean offline = false;
+	private static final boolean offline = true;
 	
 	/** This is where to find the local tiles, for working without an Internet connection */
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
@@ -76,7 +76,7 @@ public class EarthquakeCityMap extends PApplet {
 		
 		// FOR TESTING: Set earthquakesURL to be one of the testing files by uncommenting
 		// one of the lines below.  This will work whether you are online or offline
-		//earthquakesURL = "test1.atom";
+		earthquakesURL = "test1.atom";
 		//earthquakesURL = "test2.atom";
 		
 		// WHEN TAKING THIS QUIZ: Uncomment the next line
@@ -198,7 +198,46 @@ public class EarthquakeCityMap extends PApplet {
 		//     	and (2) if it is on land, that its country property matches 
 		//      the name property of the country marker.   If so, increment
 		//      the country's counter.
+				int oceancount = 0;
 		
+		for (Marker cm : countryMarkers) {
+			int quakecount = 0;
+
+			String name = (String) cm.getProperty("name");
+			
+			
+			for(Marker qm : quakeMarkers) {
+				EarthquakeMarker em = (EarthquakeMarker)qm;
+				if(em.isOnLand()) {
+				
+					
+				
+					String country = em.getStringProperty("country");
+					
+					if(name.equals(country)) {
+						
+						quakecount++;
+					}
+					
+				}
+			}
+			
+				if (quakecount > 0) {
+					System.out.println(name + ":" + quakecount);
+				}
+				else {
+					oceancount++;
+				}
+				
+				
+					
+			
+			 
+			}
+			System.out.println(oceancount);
+			
+			
+		}
 		// Here is some code you will find useful:
 		// 
 		//  * To get the name of a country from a country marker in variable cm, use:
@@ -213,7 +252,7 @@ public class EarthquakeCityMap extends PApplet {
 		//        String country = (String)m.getProperty("country");
 		
 		
-	}
+	
 	
 	
 	
