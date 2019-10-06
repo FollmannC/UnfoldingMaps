@@ -171,7 +171,7 @@ public class EarthquakeCityMap extends PApplet {
 		for (Marker m : countryMarkers) {
 			// TODO: Finish this method using the helper method isInCountry
 			isInCountry(earthquake,m);
-			
+			return true;
 		}
 		
 		
