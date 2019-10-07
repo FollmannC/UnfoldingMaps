@@ -29,11 +29,11 @@ public class OceanQuakeMarker extends EarthquakeMarker {
 		pg.rect(x, y, radius, radius);
 		x = x+(radius/2);
 		y = y+(radius/2);
-		String recentage="Past Day";
+		/*String recentage="Past Day";
 		if(age.equals(recentage)){
 		pg.line((x+7), (y+7), (x-7), (y-7));
 		pg.line((x-7), (y+7), (x+7), (y-7));
-		} 
+		} */
 		// HINT: Notice the radius variable in the EarthquakeMarker class
 		// and how it is set in the EarthquakeMarker constructor
 		
