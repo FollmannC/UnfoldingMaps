@@ -76,8 +76,8 @@ public class EarthquakeCityMap extends PApplet {
 		
 		// FOR TESTING: Set earthquakesURL to be one of the testing files by uncommenting
 		// one of the lines below.  This will work whether you are online or offline
-		earthquakesURL = "test1.atom";
-		//earthquakesURL = "test2.atom";
+		//earthquakesURL = "test1.atom";
+		earthquakesURL = "test2.atom";
 		
 		// WHEN TAKING THIS QUIZ: Uncomment the next line
 		//earthquakesURL = "quiz1.atom";
@@ -134,7 +134,7 @@ public class EarthquakeCityMap extends PApplet {
 	private void addKey() {	
 		// Remember you can use Processing's graphics methods here
 		fill(255, 250, 240);
-		rect(25, 50, 150, 250);
+		rect(25, 50, 150, 350);
 		
 		fill(0);
 		textAlign(LEFT, CENTER);
@@ -161,7 +161,8 @@ public class EarthquakeCityMap extends PApplet {
 		text("Shallow", 75, 200);
 		text("Intermediate", 75, 225);
 		text("Deep", 75, 250);
-		text("Size ~ Magnitude", 50, 275);
+		text("Past Day", 75, 275);
+		text("Size ~ Magnitude", 50, 300);
 	}
 
 	

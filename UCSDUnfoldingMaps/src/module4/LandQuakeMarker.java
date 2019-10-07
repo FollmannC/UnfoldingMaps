@@ -33,6 +33,11 @@ public class LandQuakeMarker extends EarthquakeMarker {
 		// TODO: Implement this method
 		
 		pg.ellipse(x, y, radius, radius);
+		String recentage="Past Day";
+		if(age.equals(recentage)){
+		pg.line((x+7), (y+7), (x-7), (y-7));
+		pg.line((x-7), (y+7), (x+7), (y-7));
+		}
 	}
 	
 
